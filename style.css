@@ -24,9 +24,9 @@ body{
     height: 4px;
     background-color: pink;
     position: absolute;
-    width: 0;
+    width: 64px;
     left:0px;
-    top:0;
+    top:56px; /* 처음에 좌측 상단에서 날라와 붙는게 싫어서 셋팅*/
     padding:0;
     transition: 0.5s;
 }

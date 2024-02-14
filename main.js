@@ -8,7 +8,9 @@ let underLine = document.getElementById("under-line")
 let menus = document.querySelectorAll(".task-tabs div")
 
 menus.forEach((menu) =>
-    menu.addEventListener("click", (e) => indicator(e)));
+    menu.addEventListener("click", (e) => 
+    indicator(e)
+    ));
 
 function indicator(e){
     underLine.style.left = e.currentTarget.offsetLeft + "px";
@@ -36,20 +38,26 @@ taskInput.addEventListener("click", function(){
 })
 
 function addTask(){
+
+    if(taskInput.value.trim() === "") { //빈칸시 alert 창
+        alert("할일을 입력해 주세요");
+        return;
+    }
+
     let task = {
         id: randomIDGenerate(),
         taskContent: taskInput.value,
-        isComplete: false,
+        isComplete: mode === false
     }
-    taskList.push(task)
-    console.log(task);
+    taskList.push(task);
+
     render();
     taskInput.value ="";
 }
 
 function render(){
     let list=[]
-
+    
     if(mode ==="all"){
         list = taskList;
     }else if(mode ==="ing"||mode ==="done"){
@@ -57,10 +65,10 @@ function render(){
     }
 
     let resultHTML = "";
-    for(let i=0; i<list.length; i++){
+    for(let i=0; i<list.length; i++){ 
         if(list[i].isComplete == true){
             resultHTML += `<div class="task">
-            <div class="task-done">${list[i].taskContent}</div>
+            <div class="task-done">${list[i].taskContent}</div> 작업 완료!!!
             <div>
                 <button onclick="toggleComplete('${list[i].id}')">Check</button>
                 <button onclick="deleteTask('${list[i].id}')">Delete</button>
@@ -68,12 +76,12 @@ function render(){
         </div>`
         } else{
             resultHTML += `<div class="task">
-        <div>${list[i].taskContent}</div>
-        <div>
-            <button onclick="toggleComplete('${list[i].id}')">Check</button>
-            <button onclick="deleteTask('${list[i].id}')">Delete</button>
-        </div>
-    </div>`
+            <div>${list[i].taskContent}</div>
+            <div>
+                <button onclick="toggleComplete('${list[i].id}')">Check</button>
+                <button onclick="deleteTask('${list[i].id}')">Delete</button>
+            </div>
+        </div>`
         }       
     }
     document.getElementById("task-board").innerHTML = resultHTML;
@@ -93,6 +101,8 @@ function deleteTask(id){
     for(let i=0; i<taskList.length; i++){
         if(taskList[i].id == id){
             taskList.splice(i,1)
+            // 진행중, 끝남일때도 delete 되게, 필터링된 리스트도 업데이트
+            filterList = filterList.filter(task => task.id !== id);
             break;
         }
     }
@@ -121,16 +131,6 @@ function filter(event){
     }
 }
 
-function deleteTask(id){
-    for(let i=0; i<taskList.length; i++){
-        if(taskList[i].id == id){
-            taskList.splice(i,1);
-            break;
-        }
-    }
-    render();
-}
-
 function randomIDGenerate(){
-    return '_' + Math.random().toString(36).substr(2, 9);
+    return '_' + Math.random().toString(36).substr(2, 9);    
 }
