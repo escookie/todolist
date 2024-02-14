@@ -27,6 +27,7 @@ addButton.addEventListener("click",addTask)
 document.addEventListener("keydown", function(event){
     if (event.key === "Enter"){
         addTask();
+        taskInput.value ="";
     }
 })
 
@@ -43,6 +44,7 @@ function addTask(){
     taskList.push(task)
     console.log(task);
     render();
+    taskInput.value ="";
 }
 
 function render(){
