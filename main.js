@@ -4,15 +4,35 @@ let tabs = document.querySelectorAll(".task-tabs div")
 let taskList = []
 let mode = 'all'
 let filterList = []
+let underLine = document.getElementById("under-line")
+let menus = document.querySelectorAll(".task-tabs div")
+
+menus.forEach((menu) =>
+    menu.addEventListener("click", (e) => indicator(e)));
+
+function indicator(e){
+    underLine.style.left = e.currentTarget.offsetLeft + "px";
+    underLine.style.width = e.currentTarget.offsetWidth + "px";
+    underLine.style.top = 
+        e.currentTarget.offsetTop + e.currentTarget.offsetHeight + "px";
+}    
 
 for(let i=1; i<tabs.length; i++){
     tabs[i].addEventListener("click",function(event){
-        filter(event)
+        filter(event);
     })
 }
-console.log(tabs);
 
 addButton.addEventListener("click",addTask)
+document.addEventListener("keydown", function(event){
+    if (event.key === "Enter"){
+        addTask();
+    }
+})
+
+taskInput.addEventListener("click", function(){
+    taskInput.value ="";
+})
 
 function addTask(){
     let task = {

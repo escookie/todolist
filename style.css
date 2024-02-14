@@ -24,10 +24,11 @@ body{
     height: 4px;
     background-color: pink;
     position: absolute;
-    width: 80px;
+    width: 0;
     left:0px;
-    top:52px;
-    padding: 0px;
+    top:0;
+    padding:0;
+    transition: 0.5s;
 }
 .task{
     display: flex;
