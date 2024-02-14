@@ -1,5 +1,5 @@
 body{
-    margin: 0;
+    margin: 10%;
     background-image: url("images/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,9 +8,19 @@ body{
     background-color: white;
     min-height: 100vh;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    
+}
+.container > h1 {
+    padding-top: 5%;
+    text-align: center;
+}
+.input-area{
+    padding: 0 0 2% 0;
+    text-align: right;
 }
 .task-area{
     border: 1px solid lightgray;
+    padding: 2%;
 }
 .task-tabs{
     display: flex;
