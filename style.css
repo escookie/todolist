@@ -10,7 +10,7 @@ body{
     
 }
 .container > h1 {
-    padding-top: 5%;
+    padding: 5% 0 2% 0;
     text-align: center;
 }
 .input-area{
@@ -43,7 +43,11 @@ body{
 .task{
     display: flex;
     justify-content: space-between;
-    padding: 1em;
+    padding: 1em  0  0.8em  1em;
+}
+.task button{
+    border: none;
+    background: none;
 }
 .task-done{
     text-decoration: line-through;
@@ -54,7 +58,7 @@ body{
 
 /*PC ver*/
 @media all and (min-width:600px){
-    body{margin: 10%;}
+    body{margin: 8% 35%;}
 }
 
 /*모바일ver*/

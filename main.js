@@ -68,18 +68,26 @@ function render(){
     for(let i=0; i<list.length; i++){ 
         if(list[i].isComplete == true){
             resultHTML += `<div class="task">
-            <div class="task-done">${list[i].taskContent}</div> 작업 완료!!!
+            <div class="task-done">${list[i].taskContent}</div>
             <div>
-                <button onclick="toggleComplete('${list[i].id}')">Check</button>
-                <button onclick="deleteTask('${list[i].id}')">Delete</button>
+                <button onclick="toggleComplete('${list[i].id}')">
+                    <img src="/images/check_btn_grey.jpg">
+                </button>
+                <button onclick="deleteTask('${list[i].id}')">
+                    <img src="/images/del_btn.jpg">
+                </button>
             </div>
         </div>`
         } else{
             resultHTML += `<div class="task">
             <div>${list[i].taskContent}</div>
             <div>
-                <button onclick="toggleComplete('${list[i].id}')">Check</button>
-                <button onclick="deleteTask('${list[i].id}')">Delete</button>
+                <button onclick="toggleComplete('${list[i].id}')">
+                    <img src="/images/check_btn.jpg">
+                </button>
+                <button onclick="deleteTask('${list[i].id}')">
+                    <img src="/images/del_btn.jpg">
+                </button>
             </div>
         </div>`
         }       
